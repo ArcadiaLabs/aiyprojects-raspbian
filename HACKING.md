@@ -24,8 +24,8 @@ When flashing is done, put the MicroSD card back in your kit and you're good to 
 
 Follow these steps to install the AIY drivers and software onto an existing Raspbian system.
 
-**Note:** This process is compatible with Raspbian Buster (2019-06-20) or later only.
-Before you start, be sure you have the latest version of [Raspbian][raspbian].
+**Note:** This process is compatible with Raspbian Buster 64 bits from 2021-05-07 available there : https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/
+
 
 ### 1. Add the AIY Debian packages repo
 
