@@ -295,6 +295,12 @@ Install google-auth:
 pip3 install google-auth
 ```
 
+Install google-auth-oauthlib:
+
+```bash
+pip3 install google-auth-oauthlib
+```
+
 Test audio:
 
 ```bash
