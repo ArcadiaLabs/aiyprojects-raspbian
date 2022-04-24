@@ -48,7 +48,13 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-Reboot after update:
+Install Raspberry kernel headers:
+
+```bash
+sudo apt-get install -y raspberrypi-kernel-headers
+```
+
+Then reboot:
 
 ```bash
 sudo reboot
@@ -80,6 +86,7 @@ sudo apt-get install -y pwm-soft-dkms
 #### Pi Zero Ethernet-over-USB
 
 This package is needed only if you're using Ethernet-over-USB on Pi Zero:
+
 ```bash
 sudo apt-get install -y aiy-usb-gadget
 ```
@@ -120,16 +127,19 @@ sudo apt-get install -y aiy-python-wheels
 ```
 
 Enable camera module:
+
 ```bash
 echo "start_x=1" | sudo tee -a /boot/config.txt
 ```
 
 Set GPU memory to 128MB:
+
 ```bash
 echo "gpu_mem=128" | sudo tee -a /boot/config.txt
 ```
 
 Make sure to *not* use GPIO6 for SPI0 (required since 5.4 kernel):
+
 ```bash
 echo "dtoverlay=spi0-1cs,cs0_pin=7" | sudo tee -a /boot/config.txt
 ```
@@ -148,11 +158,13 @@ dmesg | grep -i "Myriad ready"
 
 You can also verify that camera is working fine by watching video on the
 connected monitor:
+
 ```bash
 raspivid -t 0
 ```
 
 Or use `ffplay` to get video output on the host machine:
+
 ```bash
 ssh pi@raspberrypi.local "raspivid --nopreview --timeout 0 -o -" | ffplay -loglevel panic -
 ```
@@ -161,13 +173,15 @@ ssh pi@raspberrypi.local "raspivid --nopreview --timeout 0 -o -" | ffplay -logle
 
 Voice HAT does not require any driver installation. You only need to load
 device tree overlay on boot:
+
 ```bash
 echo "dtoverlay=googlevoicehat-soundcard" | sudo tee -a /boot/config.txt
 ```
 
 Voice Bonnet requires driver installation:
+
 ```bash
-sudo apt-get install -y aiy-voicebonnet-soundcard-dkms
+sudo apt-get install -y dkms aiy-voicebonnet-soundcard-dkms
 ```
 
 Disable built-in audio:
@@ -186,6 +200,7 @@ echo "default-sample-rate = 48000" | sudo tee /etc/pulse/daemon.conf.d/aiy.conf
 
 You may also need to disable `module-suspend-on-idle` PulseAudio module for the
 Voice HAT:
+
 ```bash
 sudo sed -i -e "s/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/" /etc/pulse/default.pa
 ```
@@ -197,10 +212,37 @@ If you want to use Google Assistant, install the Raspberry-Pi-compatible
 sudo apt-get install -y aiy-python-wheels
 ```
 
+Then install protobuf:
+
+```bash
+pip3 download protobuf
+pip3 install ./protobuf-3.7.1-py2.py3-none-any.whl
+sudo nano /var/lib/dpkg/info/aiy-python-wheels.postinst
+```
+
+Comment out the lines containing
+
+```
+# pip3 install --no-deps --no-cache-dir --disable-pip-version-check \
+       #     /opt/aiy/python-wheels/protobuf-3.6.1-cp35-cp35m-linux_armv6l.whl
+```
+
+Finish installation:   
+
+```bash
+sudo dpkg --configure --force-overwrite --force-overwrite-dir -a
+```
+
 Reboot:
 
 ```bash
 sudo reboot
+```
+
+Check Voice bonnet is working:
+
+```bash
+aplay -l
 ```
 
 Then verify that you can record audio:
@@ -239,7 +281,24 @@ git clone https://github.com/google/aiyprojects-raspbian.git AIY-projects-python
 And now install the Python library in editable mode:
 
 ```bash
-sudo pip3 install -e AIY-projects-python
+pip3 install --upgrade google-assistant-grpc
+```
+
+```bash
+cd ~/AIY-projects-python
+cp -R src/aiy checkpoints/aiy
+```
+
+Install google-auth:
+
+```bash
+pip3 install google-auth
+```
+
+Test audio:
+
+```bash
+python3 checkpoints/check_audio.py
 ```
 
 ## Appendix: List of all AIY Debian packages
