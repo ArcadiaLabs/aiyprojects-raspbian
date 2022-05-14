@@ -27,7 +27,28 @@ Follow these steps to install the AIY drivers and software onto an existing Rasp
 **Note:** This process is compatible with Raspbian Buster 64 bits from 2021-05-07 available there : https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-05-28/
 
 
-### 1. Add the AIY Debian packages repo
+### 1. Configure the Raspberry Pi
+
+Enable SSH :
+
+Put a file named "ssh" (without extension) on the boot partition
+
+Now, start the Raspberry Pi
+
+Connect to the Raspberry Pi SSH
+
+Setup locales and WiFi country :
+
+```bash
+sudo raspi-config
+```
+Reboot :
+
+```bash
+sudo reboot
+```
+
+### 2. Add the AIY Debian packages repo
 
 Add AIY package repo:
 
@@ -60,7 +81,7 @@ Then reboot:
 sudo reboot
 ```
 
-### 2. Install optional packages
+### 3. Install optional packages
 
 #### RGB Button Driver
 
