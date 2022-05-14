@@ -322,9 +322,10 @@ And now install the Python library in editable mode:
 pip3 install --upgrade google-assistant-grpc
 ```
 
+Copy aiy library to examples/voice folder :
+
 ```bash
-cd ~/AIY-projects-python
-cp -R src/aiy checkpoints/aiy
+cp -R ~/AIY-projects-python/src/aiy/ ~/AIY-projects-python/src/examples/voice/
 ```
 
 Install google-auth:
