@@ -62,14 +62,24 @@ Add Google package keys:
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 ```
 
-Update and install the latest system updates (including kernel):
+Update sources :
 
 ```bash
 sudo apt-get update
+```
+
+(Raspbian 64 bits) Repair VLC packages :
+```bash
+sudo apt install libvlc-bin vlc-plugin-qt
+```
+
+Install the latest system updates (including kernel) :
+
+```bash
 sudo apt-get upgrade
 ```
 
-Install Raspberry kernel headers:
+Install Raspberry kernel headers :
 
 ```bash
 sudo apt-get install -y raspberrypi-kernel-headers
