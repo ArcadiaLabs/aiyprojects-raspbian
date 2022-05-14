@@ -175,13 +175,13 @@ Make sure to *not* use GPIO6 for SPI0 (required since 5.4 kernel):
 echo "dtoverlay=spi0-1cs,cs0_pin=7" | sudo tee -a /boot/config.txt
 ```
 
-Reboot:
+Reboot :
 
 ```bash
 sudo reboot
 ```
 
-Then verify that `dmesg` output contains `Myriad ready` message:
+Then verify that `dmesg` output contains `Myriad ready` message :
 
 ```bash
 dmesg | grep -i "Myriad ready"
@@ -264,7 +264,7 @@ Comment out the lines containing
        #     /opt/aiy/python-wheels/protobuf-3.6.1-cp35-cp35m-linux_armv6l.whl
 ```
 
-Finish installation:   
+Finish installation :   
 
 ```bash
 sudo dpkg --configure --force-overwrite --force-overwrite-dir -a
@@ -276,11 +276,12 @@ Reboot:
 sudo reboot
 ```
 
-Check Voice bonnet is working:
+Check Voice bonnet is working :
 
 ```bash
 aplay -l
 ```
+Note : if Voice Bonnet is not detected after a reboot, try again after a complete shutdown. In my case, the Voice Bonnet works only after a complete shutdown, and is not detected after a reboot.
 
 Then verify that you can record audio:
 
