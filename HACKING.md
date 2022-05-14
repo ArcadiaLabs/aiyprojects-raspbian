@@ -253,7 +253,7 @@ Then install protobuf:
 
 ```bash
 pip3 download protobuf
-pip3 install ./protobuf-3.7.1-py2.py3-none-any.whl
+pip3 install ./protobuf-*.whl
 sudo nano /var/lib/dpkg/info/aiy-python-wheels.postinst
 ```
 
