@@ -131,7 +131,7 @@ In order to make the Pi work with the [AIY Projects][aiy-app] app:
 sudo apt-get install -y aiy-bt-prov-server
 ```
 
-### 3. Install required packages
+### 4. Install required packages
 
 Use the following commands to install packages for either the
 [Vision Bonnet](#install-vision-bonnet-packages) or the
@@ -299,7 +299,7 @@ Additionally, the Voice Bonnet/HAT requires access to Google Cloud APIs.
 To complete this setup, follow the [Voice Kit setup instructions][aiy-voice-setup].
 
 
-### 4. Install the AIY Projects Python library
+### 5. Install the AIY Projects Python library
 
 Finally, you need to install the [AIY Projects Python library](
 https://aiyprojects.readthedocs.io/en/latest/index.html).
