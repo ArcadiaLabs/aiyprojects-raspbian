@@ -226,6 +226,12 @@ Voice HAT:
 sudo sed -i -e "s/^load-module module-suspend-on-idle/#load-module module-suspend-on-idle/" /etc/pulse/default.pa
 ```
 
+Disable the "To install the screen reader press control alt spce" audio message :
+
+```bash
+sudo rm /etc/xdg/autostart/piwiz.desktop
+```
+
 If you want to use Google Assistant, install the Raspberry-Pi-compatible
 `google-assistant-library` python library from `aiy-python-wheels` package:
 
