@@ -249,7 +249,7 @@ If you want to use Google Assistant, install the Raspberry-Pi-compatible
 sudo apt-get install -y aiy-python-wheels
 ```
 
-Then install protobuf:
+**(64 bits)** Then install protobuf:
 
 ```bash
 pip3 download protobuf
@@ -257,14 +257,14 @@ pip3 install ./protobuf-*.whl
 sudo nano /var/lib/dpkg/info/aiy-python-wheels.postinst
 ```
 
-Comment out the lines containing
+**(64 bits)** Comment out the lines containing
 
 ```
 # pip3 install --no-deps --no-cache-dir --disable-pip-version-check \
        #     /opt/aiy/python-wheels/protobuf-3.6.1-cp35-cp35m-linux_armv6l.whl
 ```
 
-Finish installation :   
+**(64 bits)** Finish installation :   
 
 ```bash
 sudo dpkg --configure --force-overwrite --force-overwrite-dir -a
@@ -329,19 +329,25 @@ cp -R ~/AIY-projects-python/src/aiy/ ~/AIY-projects-python/src/examples/voice/
 cp -R ~/AIY-projects-python/src/aiy/ ~/AIY-projects-python/src/examples/vision/
 ```
 
-Install google-auth:
+**(32 bits)** Install google-assistant-library :
+
+```bash
+pip3 install google-assistant-library
+```
+
+**(64 bits)** Install google-auth :
 
 ```bash
 pip3 install google-auth
 ```
 
-Install google-auth-oauthlib:
+**(64 bits)** Install google-auth-oauthlib :
 
 ```bash
 pip3 install google-auth-oauthlib
 ```
 
-Test audio:
+Test audio :
 
 ```bash
 python3 checkpoints/check_audio.py
